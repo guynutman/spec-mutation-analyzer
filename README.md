@@ -167,6 +167,7 @@ Additional directions: auto-generating implementations via LLM (closing the CEGI
 ## Authors
 
 Guy Nutman — UCLA, Henry Samueli School of Engineering
+
 Nir Nutman — UCSB, Robert Mehrabian College of Engineering
 
 Built during the Apart Research Secure Program Synthesis Hackathon, May 2026.
