@@ -1,14 +1,7 @@
 # main.py
-# Entry point for the Spec Mutation Survival Analyzer.
-# Run this file to analyze any function description.
-#
-# Usage:
-#   python main.py
-#   python main.py "a function that finds the median of a list"
-
 import sys
+import ast
 from llm_client import generate_spec
-from mutator import generate_mutations
 from scorer import score_spec
 
 def main(description: str):
@@ -19,17 +12,15 @@ def main(description: str):
     print(f"  Analyzing: \"{description}\"")
     print("=" * 60)
 
-    # Step 1: Generate the spec
     print()
     print("Step 1: Generating spec from description...")
+    # Pass description as fallback_key hint — scorer picks closest match
     spec = generate_spec(description)
-    print("  Done. Spec generated successfully.")
+    print("  Done.")
 
-    # Step 2: Show what the spec is checking
     print()
-    print("Step 2: Spec contains these assertions:")
+    print("Step 2: Assertions in this spec:")
     print("-" * 60)
-    import ast
     tree = ast.parse(spec)
     count = 0
     for node in ast.walk(tree):
@@ -37,18 +28,14 @@ def main(description: str):
             print(f"  Assert #{count}: {ast.unparse(node.test)}")
             count += 1
     if count == 0:
-        print("  No assertions found — check the spec output.")
+        print("  No assertions found — check spec output.")
         return
 
-    # Step 3: Run baseline
     print()
-    print("Step 3: Running baseline (original spec vs implementations)...")
+    print("Step 3: Scoring spec...")
     print("-" * 60)
+    report = score_spec(spec)  # ← fixed: no description arg
 
-    # Step 4: Score the spec
-    report = score_spec(spec)
-
-    # Step 5: Print full report
     print()
     print("=" * 60)
     print("   MUTATION RESULTS")
@@ -65,29 +52,23 @@ def main(description: str):
     print("=" * 60)
     print("   FINAL SUMMARY")
     print("=" * 60)
-    coverage = (1 - report['survival_rate']) * 100
     print(f"  Function analyzed  : {description}")
     print(f"  Total mutations    : {report['total']}")
-    print(f"  Load-bearing       : {report['killed']}  (good — spec catches changes)")
-    print(f"  Redundant          : {report['survived']}  (weak — spec doesn't notice)")
-    print(f"  Spec coverage      : {coverage:.1f}%")
+    print(f"  Load-bearing       : {report['killed']}")
+    print(f"  Redundant          : {report['survived']}")
+    print(f"  Spec coverage      : {report['coverage']:.1f}%")
     print()
     if report['survived'] == 0:
         print("  ★ Perfect spec — every clause is load-bearing.")
-    elif coverage >= 75:
+    elif report['coverage'] >= 75:
         print("  ◆ Strong spec — minor redundancy.")
-    elif coverage >= 50:
+    elif report['coverage'] >= 50:
         print("  ▲ Moderate spec — some clauses need strengthening.")
     else:
         print("  ✗ Weak spec — majority of clauses are redundant.")
     print("=" * 60)
-    print()
 
 if __name__ == "__main__":
-    # Use command line argument if provided, otherwise use default
-    if len(sys.argv) > 1:
-        description = " ".join(sys.argv[1:])
-    else:
-        description = "a function that sorts a list of integers"
-    
+    description = " ".join(sys.argv[1:]) if len(sys.argv) > 1 else \
+                  "a function that sorts a list of integers"
     main(description)

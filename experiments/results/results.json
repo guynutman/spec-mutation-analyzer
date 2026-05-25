@@ -1,0 +1,402 @@
+{
+  "run_at": "2026-05-24T23:48:19.391134",
+  "cases": [
+    {
+      "name": "Sort integers",
+      "description": "a function that sorts a list of integers in ascending order",
+      "complexity": "Simple",
+      "total": 7,
+      "killed": 4,
+      "survived": 3,
+      "coverage": 57.1,
+      "baseline": {
+        "correct": true,
+        "wrong_length": false,
+        "unsorted": false,
+        "always_empty": false
+      },
+      "mutations": [
+        {
+          "label": "== \u2192 != (occurrence 0)",
+          "survived": false
+        },
+        {
+          "label": "== \u2192 != (occurrence 1)",
+          "survived": false
+        },
+        {
+          "label": "== \u2192 != (occurrence 2)",
+          "survived": false
+        },
+        {
+          "label": "removed assert #0  (all((x in xs for x in result)))",
+          "survived": true
+        },
+        {
+          "label": "removed assert #1  (result == sorted(result))",
+          "survived": false
+        },
+        {
+          "label": "removed assert #2  (len(result) == len(xs))",
+          "survived": true
+        },
+        {
+          "label": "removed assert #3  (all((xs.count(x) == result.count(x) for x in set(xs))))",
+          "survived": true
+        }
+      ]
+    },
+    {
+      "name": "Find maximum",
+      "description": "a function that returns the maximum value in a non-empty list of integers",
+      "complexity": "Simple",
+      "total": 7,
+      "killed": 0,
+      "survived": 7,
+      "coverage": 0.0,
+      "baseline": {
+        "correct": false,
+        "returns_min": false,
+        "off_by_one": false,
+        "returns_first": false
+      },
+      "mutations": [
+        {
+          "label": "== \u2192 != (occurrence 0)",
+          "survived": true
+        },
+        {
+          "label": "== \u2192 != (occurrence 1)",
+          "survived": true
+        },
+        {
+          "label": "== \u2192 != (occurrence 2)",
+          "survived": true
+        },
+        {
+          "label": "removed assert #0  (all((x in xs for x in result)))",
+          "survived": true
+        },
+        {
+          "label": "removed assert #1  (sorted(result) == result)",
+          "survived": true
+        },
+        {
+          "label": "removed assert #2  (len(result) == len(xs))",
+          "survived": true
+        },
+        {
+          "label": "removed assert #3  (all((xs.count(x) == result.count(x) for x in set(xs))))",
+          "survived": true
+        }
+      ]
+    },
+    {
+      "name": "Palindrome check",
+      "description": "a function that returns True if a string is a palindrome, False otherwise",
+      "complexity": "Simple",
+      "total": 7,
+      "killed": 0,
+      "survived": 7,
+      "coverage": 0.0,
+      "baseline": {
+        "correct": false,
+        "always_true": false,
+        "always_false": false,
+        "wrong_slice": false
+      },
+      "mutations": [
+        {
+          "label": "== \u2192 != (occurrence 0)",
+          "survived": true
+        },
+        {
+          "label": "== \u2192 != (occurrence 1)",
+          "survived": true
+        },
+        {
+          "label": "== \u2192 != (occurrence 2)",
+          "survived": true
+        },
+        {
+          "label": "removed assert #0  (all((x in xs for x in result)))",
+          "survived": true
+        },
+        {
+          "label": "removed assert #1  (result == sorted(result))",
+          "survived": true
+        },
+        {
+          "label": "removed assert #2  (len(result) == len(xs))",
+          "survived": true
+        },
+        {
+          "label": "removed assert #3  (all((xs.count(x) == result.count(x) for x in set(xs))))",
+          "survived": true
+        }
+      ]
+    },
+    {
+      "name": "Median of list",
+      "description": "a function that returns the median of a list of numbers (average of two middle elements for even-length lists)",
+      "complexity": "Medium",
+      "total": 7,
+      "killed": 0,
+      "survived": 7,
+      "coverage": 0.0,
+      "baseline": {
+        "correct": false,
+        "ignores_even": false,
+        "returns_min": false,
+        "returns_mean": false
+      },
+      "mutations": [
+        {
+          "label": "== \u2192 != (occurrence 0)",
+          "survived": true
+        },
+        {
+          "label": "== \u2192 != (occurrence 1)",
+          "survived": true
+        },
+        {
+          "label": "== \u2192 != (occurrence 2)",
+          "survived": true
+        },
+        {
+          "label": "removed assert #0  (all((x in xs for x in result)))",
+          "survived": true
+        },
+        {
+          "label": "removed assert #1  (result == sorted(result))",
+          "survived": true
+        },
+        {
+          "label": "removed assert #2  (len(result) == len(xs))",
+          "survived": true
+        },
+        {
+          "label": "removed assert #3  (all((xs.count(x) == result.count(x) for x in set(xs))))",
+          "survived": true
+        }
+      ]
+    },
+    {
+      "name": "Remove duplicates",
+      "description": "a function that removes duplicates from a list while preserving the original order of first occurrences",
+      "complexity": "Medium",
+      "total": 7,
+      "killed": 1,
+      "survived": 6,
+      "coverage": 14.3,
+      "baseline": {
+        "correct": false,
+        "ignores_order": false,
+        "no_dedup": false,
+        "always_empty": false
+      },
+      "mutations": [
+        {
+          "label": "== \u2192 != (occurrence 0)",
+          "survived": true
+        },
+        {
+          "label": "== \u2192 != (occurrence 1)",
+          "survived": true
+        },
+        {
+          "label": "== \u2192 != (occurrence 2)",
+          "survived": true
+        },
+        {
+          "label": "removed assert #0  (all((x in xs for x in result)))",
+          "survived": true
+        },
+        {
+          "label": "removed assert #1  (result == sorted(result))",
+          "survived": false
+        },
+        {
+          "label": "removed assert #2  (len(result) == len(xs))",
+          "survived": true
+        },
+        {
+          "label": "removed assert #3  (result.count(x) == xs.count(x))",
+          "survived": true
+        }
+      ]
+    },
+    {
+      "name": "Binary search",
+      "description": "a function binary_search(lst, val) that returns the index of val in a sorted list, or -1 if not found",
+      "complexity": "Medium",
+      "total": 8,
+      "killed": 0,
+      "survived": 8,
+      "coverage": 0.0,
+      "baseline": {
+        "correct": false,
+        "linear_search": false,
+        "always_zero": false,
+        "always_missing": false
+      },
+      "mutations": [
+        {
+          "label": "<= \u2192 < (occurrence 0)",
+          "survived": true
+        },
+        {
+          "label": "== \u2192 != (occurrence 0)",
+          "survived": true
+        },
+        {
+          "label": "== \u2192 != (occurrence 1)",
+          "survived": true
+        },
+        {
+          "label": "== \u2192 != (occurrence 2)",
+          "survived": true
+        },
+        {
+          "label": "removed assert #0  (val in result)",
+          "survived": true
+        },
+        {
+          "label": "removed assert #1  (len(result) == len(xs) + 1)",
+          "survived": true
+        },
+        {
+          "label": "removed assert #2  (all((result[i] <= result[i + 1] for i in range(len(result) - 1))))",
+          "survived": true
+        },
+        {
+          "label": "removed assert #3  (result.count(x) == xs.count(x) + (1 if x == val else 0))",
+          "survived": true
+        }
+      ]
+    },
+    {
+      "name": "Flatten nested list",
+      "description": "a function that recursively flattens a nested list of integers into a single flat list",
+      "complexity": "Complex",
+      "total": 6,
+      "killed": 1,
+      "survived": 5,
+      "coverage": 16.7,
+      "baseline": {
+        "correct": false,
+        "one_level": false,
+        "no_flatten": false,
+        "always_empty": false
+      },
+      "mutations": [
+        {
+          "label": "== \u2192 != (occurrence 0)",
+          "survived": true
+        },
+        {
+          "label": "== \u2192 != (occurrence 1)",
+          "survived": true
+        },
+        {
+          "label": "== \u2192 != (occurrence 2)",
+          "survived": true
+        },
+        {
+          "label": "removed assert #0  (len(result) == len(xs))",
+          "survived": true
+        },
+        {
+          "label": "removed assert #1  (sorted(result) == sorted(xs))",
+          "survived": true
+        },
+        {
+          "label": "removed assert #2  (result == sorted(xs))",
+          "survived": false
+        }
+      ]
+    },
+    {
+      "name": "Group even/odd",
+      "description": "a function that takes a list of integers and returns a dict with keys 'even' and 'odd' containing the respective elements",
+      "complexity": "Complex",
+      "total": 5,
+      "killed": 0,
+      "survived": 5,
+      "coverage": 0.0,
+      "baseline": {
+        "correct": false,
+        "swapped": false,
+        "all_empty": false,
+        "all_even": false
+      },
+      "mutations": [
+        {
+          "label": "== \u2192 != (occurrence 0)",
+          "survived": true
+        },
+        {
+          "label": "removed assert #0  (isinstance(result, bool))",
+          "survived": true
+        },
+        {
+          "label": "removed assert #1  (target(xs, val) == (val in xs))",
+          "survived": true
+        },
+        {
+          "label": "removed assert #2  (not target(xs, val))",
+          "survived": true
+        },
+        {
+          "label": "removed assert #3  (target(xs, val))",
+          "survived": true
+        }
+      ]
+    },
+    {
+      "name": "Merge sorted lists",
+      "description": "a function that merges two sorted lists into a single sorted list",
+      "complexity": "Complex",
+      "total": 7,
+      "killed": 0,
+      "survived": 7,
+      "coverage": 0.0,
+      "baseline": {
+        "correct": false,
+        "unsorted_concat": false,
+        "sorted_concat": false,
+        "always_empty": false
+      },
+      "mutations": [
+        {
+          "label": "== \u2192 != (occurrence 0)",
+          "survived": true
+        },
+        {
+          "label": "== \u2192 != (occurrence 1)",
+          "survived": true
+        },
+        {
+          "label": "== \u2192 != (occurrence 2)",
+          "survived": true
+        },
+        {
+          "label": "removed assert #0  (all((x in xs for x in result)))",
+          "survived": true
+        },
+        {
+          "label": "removed assert #1  (result == sorted(result))",
+          "survived": true
+        },
+        {
+          "label": "removed assert #2  (len(result) == len(xs))",
+          "survived": true
+        },
+        {
+          "label": "removed assert #3  (all((xs.count(val) == result.count(val) for val in set(xs))))",
+          "survived": true
+        }
+      ]
+    }
+  ]
+}
